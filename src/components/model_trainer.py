@@ -52,7 +52,46 @@ class ModelTrainer:
                 "KNN": KNeighborsRegressor()
             }
 
-            model_report: dict= evaluate_model(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models)[1]
+            params = {
+                "Random_Forest": {
+                    "n_estimators": [100,200,300,400,500],
+                    "criterion": ["squared_error", "absolute_error", "friedman_mse", "poisson"],
+                    "max_depth": [2,5,8,10],
+                    "min_samples_split": [2, 5],
+                    "max_features": ["sqrt", "log2", None],
+                },
+                "Decison_Tree": {
+                    "criterion": ["squared_error", "absolute_error", "friedman_mse", "poisson"],
+                    "splitter": ["best", "random"],
+                    "max_depth": [2,5,8,10],
+                    "min_samples_split": [2, 5],
+                    "max_features": ["sqrt", "log2", None],
+                },
+                "Gradient_Boost": {
+                    "loss": ["squared_error","absolute_error","huber","quantile"],
+                    "learning_rate": [1,0.1,0.01,0.001],
+                    "n_estimators": [100,200,300,400,500],
+                    "criterion": ["friedman_mse", "squared_error"]
+                },
+                "Ada_Boost": {
+                    "n_estimators": [100,200,300,400,500],
+                    "learning_rate": [1,0.1,0.01,0.001],
+                    "loss": ["linear","square","exponential"]
+                },
+                "CatBoost": {
+                    "depth": [6,8,10],
+                    "learning_rate": [0.01, 0.05, 0.1],
+                    "iterations": [30, 50, 100],
+                },
+                "Linear_Regression": {},
+                "KNN": {
+                    "n_neighbors": [3,5,7],
+                    "weights": ["uniform", "distance"],
+                    "algorithm": ["auto", "ball_tree", "kd_tree", "brute"]
+                }
+            }
+
+            model_report: dict= evaluate_model(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models, param=params)[1]
 
             # To get best model score from dict
             best_model_score = max(sorted(model_report.values()))
