@@ -56,22 +56,22 @@ class ModelTrainer:
                 "Random_Forest": {
                     "n_estimators": [100,200,300,400,500],
                     "criterion": ["squared_error", "absolute_error", "friedman_mse", "poisson"],
-                    "max_depth": [2,5,8,10],
-                    "min_samples_split": [2, 5],
-                    "max_features": ["sqrt", "log2", None],
+                    # "max_depth": [2,5,8,10],
+                    # "min_samples_split": [2, 5],
+                    # "max_features": ["sqrt", "log2", None],
                 },
                 "Decison_Tree": {
                     "criterion": ["squared_error", "absolute_error", "friedman_mse", "poisson"],
                     "splitter": ["best", "random"],
-                    "max_depth": [2,5,8,10],
-                    "min_samples_split": [2, 5],
-                    "max_features": ["sqrt", "log2", None],
+                    # "max_depth": [2,5,8,10],
+                    # "min_samples_split": [2, 5],
+                    # "max_features": ["sqrt", "log2", None],
                 },
                 "Gradient_Boost": {
                     "loss": ["squared_error","absolute_error","huber","quantile"],
                     "learning_rate": [1,0.1,0.01,0.001],
                     "n_estimators": [100,200,300,400,500],
-                    "criterion": ["friedman_mse", "squared_error"]
+                    # "criterion": ["friedman_mse", "squared_error"]
                 },
                 "Ada_Boost": {
                     "n_estimators": [100,200,300,400,500],
@@ -85,7 +85,7 @@ class ModelTrainer:
                 },
                 "Linear_Regression": {},
                 "KNN": {
-                    "n_neighbors": [3,5,7],
+                    # "n_neighbors": [3,5,7],
                     "weights": ["uniform", "distance"],
                     "algorithm": ["auto", "ball_tree", "kd_tree", "brute"]
                 }
