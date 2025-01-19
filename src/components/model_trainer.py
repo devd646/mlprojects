@@ -24,12 +24,12 @@ from src.utils import (
 )
 
 @dataclass
-class ModelrainerConfig:
+class ModelTrainerConfig:
     trained_model_file_path = os.path.join("artifacts", "model.pkl")
 
 class ModelTrainer:
     def __init__(self):
-        self.model_trainer_config=ModelrainerConfig()
+        self.model_trainer_config=ModelTrainerConfig()
 
     def initiate_model_traininer(self,train_array, test_array):
         try:
